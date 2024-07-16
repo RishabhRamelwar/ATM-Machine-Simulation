@@ -1,0 +1,65 @@
+import time
+
+print(".....Welcome to YAARO Cooperative Bank.....\n")
+print("Please enter your ATM Card")
+time.sleep(5);
+print()
+pwd=[1234]
+pin=int(input("Enter your pin: "))
+if(pin==pwd[0]):
+    print("Here is your List :")
+    ans="y"
+    total=0
+    while(ans!="n"):
+        print("1. Withdraw")
+        print("2. Deposit")
+        print("3. Total Balance")
+        print("4. Pin Change")
+        print("5. Exit")
+        print()
+        opt=int(input("Choose: "))
+        match(opt):
+            case 1:
+                amt=int(input("Enter Amount to be withdraw: "))
+                if(total==0 or total<amt):
+                    print("Insufficient Balance.....")
+                
+                else:
+                    tpin=int(input("Enter your ATM pin: "))
+                    if(tpin==pwd[0]):
+                        total=total-amt;
+                        print()
+                        print(f"Successfully withdrawal of {amt} Rs from your account")
+                    else:
+                        print("Invalid PIN...!!!")
+            
+            case 2:
+                amt=int(input("Enter Amount to be deposit: "))
+                tpin=int(input("Enter your ATM pin: "))
+                if(tpin==pwd[0]):
+                    total=total+amt;
+                    print()
+                    print(f"Successfully deposited {amt} Rs in your account")
+                else:
+                    print("Invalid PIN...!!!")
+            
+            case 3:
+                print(f"Total Balance of your account is {total}")
+                
+            case 4:
+                npin=int(input("Enter new pin: "))
+                pwd[0]=npin;
+                print("Your ATM pin is changed successfully")
+                
+            case 5:
+                print("THANK YOU..!!!")
+                break;
+            
+            case _:
+                print("Invalid Input....")
+        
+        ans=input("Want To Continue Banking ??(y/n): ")  
+        print()
+        
+else:
+    print("Invalid Pin...... try again !!!")
